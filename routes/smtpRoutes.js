@@ -26,9 +26,9 @@ const emailTemplates = [
 router.get(
   "/simple",
   [
-    body("to").isEmpty().withMessage("Empty receipient"),
-    body("subject").isEmpty().withMessage("Empty subject"),
-    body("text").isEmpty().withMessage("Empty messgae"),
+    body("to").isEmail().withMessage("Empty receipient"),
+    body("subject").not().isEmpty().withMessage("Empty subject"),
+    body("text").not().isEmpty().withMessage("Empty message"),
   ],
   service.sendSimpleEmail
 );
@@ -45,11 +45,10 @@ router.get(
 router.get(
   "/template",
   [
-    body("to").isEmpty().withMessage("Empty receipient"),
-    body("subject").isEmpty().withMessage("Empty subject"),
+    body("to").isEmail().withMessage("Empty receipient"),
+    body("subject").not().isEmpty().withMessage("Empty subject"),
     body("template")
       .isIn(emailTemplates)
-      .not()
       .withMessage(
         "Template entered does not match any of existing templates' names"
       ),
