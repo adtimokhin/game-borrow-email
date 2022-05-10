@@ -1,0 +1,117 @@
+<!-- email and token -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Verification</title>
+    <style>
+      main {
+        background-color: #c3c3c3fe;
+        width: auto;
+        height: auto;
+      }
+      .title {
+        text-align: center;
+        text-decoration: underline solid;
+      }
+
+      .title h1 {
+        color: #090909;
+      }
+      .content {
+        color: #191717;
+      }
+      .paragraph h3 {
+        margin-bottom: 10px;
+      }
+      .paragraph p {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        max-width: 1000px;
+      }
+
+      p.other-line {
+        padding-left: 10px;
+      }
+
+      .place__holder {
+        padding-top: 100px;
+        padding-bottom: 40px;
+      }
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .register__button {
+        width: fit-content;
+        border: 2px solid #0490b0;
+        background-color: #027088;
+        color: #d5e0e2;
+        padding: 10px;
+        border-radius: 12px;
+        transition-duration: 0.4s;
+      }
+
+      .register__button:hover {
+        background-color: #0490b0;
+        border: 2px solid #027088;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="title">
+        <h1 class="bold">Welcome!</h1>
+      </div>
+
+      <div class="content">
+        <div class="paragraph">
+          <h3>Thank you for registering with game-borrow.</h3>
+          <p>
+            We welcome you to the community and hope that you will have fun
+            trying out this project.
+          </p>
+          <p class="other-line">
+            Before you can start playing, please verify your email. This will
+            help us to verify your identity in the futre!
+          </p>
+        </div>
+
+        <div class="paragraph">
+          <h3>Press the button</h3>
+          <p>
+            Yep, you got that right. To finish verification just press the
+            button down below!
+          </p>
+        </div>
+
+        <div class="place__holder">
+          <button
+            class="register__button center"
+            onclick="redirect('${email}', '${token}')"
+          >
+            Complete verification!
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      function redirect(email, verificationCode) {
+        // redirect users to a page to verify their email
+        const Http = new XMLHttpRequest();
+        const url = "http://localhost:8080/";
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+          console.log(Http.responseText);
+        };
+      }
+    </script>
+  </body>
+</html>
