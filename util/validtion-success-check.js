@@ -1,6 +1,8 @@
 const { validationResult } = require("express-validator");
 
-// Checks whether there are errors detected by the middleware. If yes, this method will also throw an error.
+/**
+ * Checks whether there are errors detected by the middleware. If yes, this method will also throw an error.
+ */
 module.exports = checkForValidationErrors = (req, errorMessage) => {
   if (!errorMessage) {
     errorMessage = "Invalid input";

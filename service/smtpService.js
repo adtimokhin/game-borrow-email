@@ -62,12 +62,12 @@ module.exports.sendTemplateEmail = (req, res, next) => {
 
       const response = new Response(code, msg, data);
 
-      // todo: ADD A LOGGING
+      // TODO: ADD A LOGGING
 
       res.status(code).json(response);
     })
     .catch((err) => {
-      // todo: ADD A LOGGING
+      // TODO: ADD A LOGGING
       throw err;
     });
 };

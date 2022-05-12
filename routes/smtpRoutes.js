@@ -39,7 +39,7 @@ router.get(
      to:recepientEmail,
      subject:emailSubject,
      template:templateName, 
-     data:dataToFillInTheTemplate
+     data:dataToFillInTheTemplate // addtitional field
  }
 */
 router.get(
